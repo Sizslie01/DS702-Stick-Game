@@ -49,4 +49,4 @@ if indicator == 0: #Display winner!!
     print('I,smart computer, win !!!!')
 else:
     print('I, smart computer, takes the last stick.\n')
-    print('Somchai win (I, smart computer, am sad T_T)')
+    print(name,'win, (I, smart computer, am sad T_T)')
