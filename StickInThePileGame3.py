@@ -2,27 +2,37 @@
 #HW1D_stickpile
 #12-7-2023
 
-import random
+name = input('What is your name :')
+n_stick = 20
+print('There are {} sticks in the pile'.format(n_stick))
 
-def take_stick (n_take,n_sticks):#define function for take stick from the pile game.
+def user_take_stick (n_of_sticks):
+    n_take = int(input('How many you will take (1 or 2):'))
     if n_take > 2: #1st condition check the limit number of taken stick and amount of stick left.
         print('No you cannot take more than 2 sticks!\n')
     elif n_take < 1:
         print('No you cannot take less than 1 stick!\n')
-    elif n_take > n_sticks:
+    elif n_take > n_of_sticks:
         print('There are no enough sticks to take.\n')
-    else :
-        n_sticks -= n_take #take the stick from the pile.
-        if n_sticks == 1:#2nd condition check how many stick left after taken out.
-            print('There are',n_sticks,'stick in the pile.\n')
-        elif n_sticks > 0: 
-            print('There are',n_sticks,'sticks in the pile.\n')
-    return n_sticks
+    else:
+        n_of_sticks -= n_take
+        if n_of_sticks == 1:#2nd condition check how many stick left after taken out.
+            print('There are',n_of_sticks,'stick in the pile.\n')
+        elif n_of_sticks > 0: 
+            print('There are',n_of_sticks,'sticks in the pile.\n')
+        indicator = 'user'    
+        return indicator ,n_of_sticks
+    
+        
+def winner_indicator (indicator,name):
+    if indicator == 'user' :
+        print('You take the last stick,\n I WON (Python WON)')
+    else:
+        print('I take the last stick,\n YOU WON ({} WON)'.format(name))
 
 
-n_stick = int(input('How many sticks (N) in the pile:'))
-print('There are {} sticks in the pile'.format(n_stick))
-name = input('What is your name :')
+
+
 
 while n_stick > 0: #create while loop until number of stick was out
     remainder = n_stick 
@@ -42,11 +52,3 @@ while n_stick > 0: #create while loop until number of stick was out
             indicator = 1
             break
                 
-        
-
-if indicator == 0: #Display winner!!
-    print(name,', takes the last stick.\n')
-    print('I,smart computer, win !!!!')
-else:
-    print('I, smart computer, takes the last stick.\n')
-    print(name,'win, (I, smart computer, am sad T_T)')
