@@ -7,10 +7,13 @@ name = input('What is your name : ')
 n_sticks = int(input('How many sticks (N) in the pile: '))
 print('There are {} sticks in the pile'.format(n_sticks))
 
+
 #stick_taken = int(input('How many stick can be taken: '))
 #winner_taken = int(input('How many number of last will be lose: '))
 
+#Note 
 def user_take_stick (n_of_sticks, take_not_more_than = 2, winner_condition = 1):
+    #Define the action of user and display result from following condition.
     while n_of_sticks > 0:
         n_take = int(input('How many you will take (1 or 2): '))
         if n_take > take_not_more_than: #1st condition check the limit number of taken stick and amount of stick left.
@@ -25,15 +28,15 @@ def user_take_stick (n_of_sticks, take_not_more_than = 2, winner_condition = 1):
                 print('There are',n_of_sticks,'stick in the pile.\n')
             elif n_of_sticks > 0: 
                 print('There are',n_of_sticks,'sticks in the pile.\n')
-            loser = 'user'    
+            loser = 'user' #Check who pick the stick now!
             return loser ,n_of_sticks
     
 def bot_take_stick (n_of_sticks, take_not_more_than = 2, winner_condition = 1):
+    #Define the action of bot and display result from following condition.
+    taken_pattern = winner_condition + take_not_more_than #check the winnable pattern.
     
-    taken_pattern = winner_condition + take_not_more_than
-    stick_left = ((n_of_sticks // taken_pattern)*taken_pattern) + winner_condition
-    
-    if stick_left == n_of_sticks:
+    stick_left = ((n_of_sticks // taken_pattern)*taken_pattern) + winner_condition 
+    if stick_left == n_of_sticks: #Check how many stick should be left.
         if n_of_sticks == winner_condition:
             n_bot_take = winner_condition
         else:
@@ -42,18 +45,19 @@ def bot_take_stick (n_of_sticks, take_not_more_than = 2, winner_condition = 1):
         n_bot_take = n_of_sticks - stick_left
     else:
         n_bot_take = n_of_sticks - stick_left + taken_pattern
-    n_of_sticks -= n_bot_take    
+
+    n_of_sticks -= n_bot_take    #take the stick.
     print('I take {} stick, there are {} sticks in the pile.'.format(n_bot_take,n_of_sticks))
-    loser = 'bot'
+    loser = 'bot' #Check who pick the stick now!
     return loser ,n_of_sticks    
     
-def winner_indicator (loser,user_name):
+def winner_indicator (loser,user_name): #Display the winner from loser_indicator.
     if loser == 'user' :
         print('You take the last stick,\nI WON (Python WON)')
     else:
         print('I take the last stick,\nYOU WON ({} WON)'.format(user_name))
         
-
+#Calling main funtion.
 while n_sticks > 0: 
     indicator ,n_sticks = bot_take_stick(n_sticks)
     if n_sticks > 0:
