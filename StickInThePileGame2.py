@@ -20,6 +20,6 @@ while n_stick > 0:
             print('There are',n_stick,'sticks in the pile.')
             
     
-    
-    
-print('OK. There is no stick left in the pile. You spend',times,'times.')
+
+print('OK. There is no stick left in the pile. You spend',times,'time.')
+a=5
