@@ -21,5 +21,4 @@ while n_stick > 0:
             
     
 
-print('OK. There is no stick left in the pile. You spend',times,'time.')
-a=5
+print('OK. There is no stick left in the pile. You spend',times,'times.')
