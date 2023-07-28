@@ -35,17 +35,10 @@ def bot_take_stick (n_of_sticks, take_not_more_than = 2, winner_condition = 1):
     #Define the action of bot and display result from following condition.
     taken_pattern = winner_condition + take_not_more_than #check the winnable pattern.
     
-    stick_left = ((n_of_sticks // taken_pattern)*taken_pattern) + winner_condition 
-    if stick_left == n_of_sticks: #Check how many stick should be left.
-        if n_of_sticks == winner_condition:
-            n_bot_take = winner_condition
-        else:
-            n_bot_take = random.randint(winner_condition,take_not_more_than)
-    elif stick_left < n_of_sticks:
-        n_bot_take = n_of_sticks - stick_left
-    else:
-        n_bot_take = n_of_sticks - stick_left + taken_pattern
-
+    stick_left = (((n_of_sticks - 1) // taken_pattern)*taken_pattern) + winner_condition 
+    n_bot_take = n_of_sticks - stick_left 
+    if n_bot_take == 0 :
+        n_bot_take = 1 if (n_of_sticks == winner_condition) else random.randint(winner_condition,take_not_more_than)
     n_of_sticks -= n_bot_take    #take the stick.
     print('I take {} stick, there are {} sticks in the pile.'.format(n_bot_take,n_of_sticks))
     loser = 'bot' #Check who pick the stick now!
